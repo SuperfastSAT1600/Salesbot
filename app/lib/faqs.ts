@@ -66,7 +66,7 @@ export const faqs: FAQItem[] = [
 
 - **여름방학 특강 (2025년 6/9 ~ 8/1 진행)**: 여름방학 기간 동안 집중적인 학습으로 SAT 실력의 기본 다지기와 도약을 목표로 하는 수업입니다.
 진단 결과에 따라 최대 3~5명의 소수정예 수업 진행됩니다. 실시간 라이브 강의와 개인별 맞춤 합습이 결합된 형태로, 기초부터 심화 내용까지
-단기간에 밀도 높게 다루어 젖ㅁ수 향상을 이끌어냅니다. 전담 매니저님이 특강 기간 동안의 학습을 지원합니다.
+단기간에 밀도 높게 다루어 점수 향상을 이끌어냅니다. 전담 매니저님이 특강 기간 동안의 학습을 지원합니다.
 
 **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
@@ -116,7 +116,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 ![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image4.png)
 ![학생 A의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image7.png)
 
-빠른 카톡 상담: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 ---
 
 **학부모님 후기:**
@@ -125,6 +125,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 
 ![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image5.png)
 ![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image6.png)
+- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 
 `
   },

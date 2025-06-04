@@ -10,7 +10,7 @@ interface Message {
 
 const initialGreetingMessage: Message = {
   role: 'assistant',
-  content: 'SuperfastSAT 무엇이든 물어보세요!'
+  content: 'SuperfastSAT 무엇이든 물어보세요!' // 이 메시지는 프론트엔드에서만 표시
 };
 
 const ChatbotWidget: React.FC = () => {
@@ -18,9 +18,9 @@ const ChatbotWidget: React.FC = () => {
   const [inputMessage, setInputMessage] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [threadId, setThreadId] = useState<string | null>(null); // 스레드 ID 상태
 
   useEffect(() => {
-    // ★★★ scrollIntoView 옵션 수정 ★★★
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [messages]);
 
@@ -28,21 +28,23 @@ const ChatbotWidget: React.FC = () => {
     if (event) {
       event.preventDefault();
     }
-    console.log('[ChatbotWidget] sendMessage 시작됨. 입력값:', `"${inputMessage.trim()}"`, '로딩상태:', isLoading);
-
     const trimmedInput = inputMessage.trim();
+    console.log('[ChatbotWidget] sendMessage 시작. 입력:', `"${trimmedInput}"`, 'Thread ID:', threadId, '로딩상태:', isLoading);
+
+
     if (trimmedInput === '' || isLoading) {
-      console.log('[ChatbotWidget] 메시지가 비었거나 로딩 중이라서 중단.');
+      console.log('[ChatbotWidget] 메시지가 비었거나 로딩 중, 중단.');
       return;
     }
 
     const newUserMessage: Message = { role: 'user', content: trimmedInput };
-    const messagesForApi = [...messages, newUserMessage];
-
-    setMessages(messagesForApi);
+    setMessages(prev => [...prev, newUserMessage]);
+    
+    const currentMessageContent = trimmedInput;
     setInputMessage('');
     setIsLoading(true);
-    console.log('[ChatbotWidget] API로 보낼 메시지 목록:', messagesForApi);
+
+    console.log('[ChatbotWidget] API 요청 전송. 메시지:', currentMessageContent, 'Thread ID:', threadId);
 
     try {
       const response = await fetch('/api/chat', {
@@ -50,7 +52,10 @@ const ChatbotWidget: React.FC = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ messages: messagesForApi }),
+        body: JSON.stringify({
+          message: currentMessageContent,
+          threadId: threadId,
+        }),
       });
 
       console.log('[ChatbotWidget] fetch 응답 상태:', response.status, response.statusText);
@@ -69,33 +74,25 @@ const ChatbotWidget: React.FC = () => {
         console.error('[ChatbotWidget] API 요청 실패 응답 본문:', errorData);
         setMessages(prev => [...prev, {
           role: 'assistant',
-          content: `서버 오류: ${errorData.error || '알 수 없는 문제'}`
+          content: `오류: ${errorData.error || '알 수 없는 문제'}`
         }]);
         throw new Error(`API 요청 실패: ${response.status}`);
       }
 
-      const data: Message = await response.json();
+      const data = await response.json();
       console.log('[ChatbotWidget] API로부터 받은 데이터:', data);
 
-      if (data && data.role === 'assistant') {
-        if (typeof data.content === 'string') {
-          setMessages(prev => [...prev, data]);
-        } else if (data.content === null && (data as any).tool_calls) {
-          console.log('[ChatbotWidget] AI가 tool_calls를 요청:', (data as any).tool_calls);
-          const toolCallDisplayMessage: Message = {
-            role: 'assistant',
-            content: `(AI가 기능을 사용하려고 합니다: ${(data as any).tool_calls[0]?.function?.name})`
-          };
-          setMessages(prev => [...prev, toolCallDisplayMessage]);
-        } else {
-          console.error('[ChatbotWidget] AI 응답 content 형식이 예상과 다름:', data.content);
-          setMessages(prev => [...prev, {
-            role: 'assistant',
-            content: 'AI 응답을 받았으나 내용을 표시할 수 없습니다 (형식 오류).'
-          }]);
+      if (data.error) {
+        console.error('[ChatbotWidget] 백엔드 API 에러:', data.error);
+        setMessages(prev => [...prev, { role: 'assistant', content: `오류: ${data.error}` }]);
+      } else if (data.role === 'assistant' && typeof data.content === 'string') {
+        setMessages(prev => [...prev, { role: 'assistant', content: data.content }]);
+        if (data.threadId && data.threadId !== threadId) {
+          setThreadId(data.threadId);
+          console.log('[ChatbotWidget] Thread ID 업데이트됨:', data.threadId);
         }
       } else {
-        console.error('[ChatbotWidget] AI로부터 유효하지 않은 응답 (role 또는 데이터 없음):', data);
+        console.error('[ChatbotWidget] AI로부터 유효하지 않은 응답 형식:', data);
         setMessages(prev => [...prev, {
           role: 'assistant',
           content: 'AI 응답 형식이 올바르지 않습니다.'
@@ -104,7 +101,7 @@ const ChatbotWidget: React.FC = () => {
 
     } catch (error) {
       console.error('[ChatbotWidget] 메시지 전송/응답 처리 중 예외 발생:', error);
-      if (!messages.find(msg => msg.role === 'assistant' && msg.content?.startsWith('서버 오류:'))) {
+      if (!messages.some(msg => msg.role === 'assistant' && msg.content?.includes('오류:'))) {
          setMessages(prev => [...prev, {
           role: 'assistant',
           content: '메시지 처리 중 오류가 발생했습니다. 네트워크 연결을 확인해주세요.'
@@ -119,14 +116,13 @@ const ChatbotWidget: React.FC = () => {
   const handleKeyPress = (event: KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' && !event.shiftKey) {
       event.preventDefault();
-      console.log('[ChatbotWidget] Enter 키 눌림 (handleKeyPress). sendMessage 직접 호출 시도.');
+      console.log('[ChatbotWidget] Enter 키 입력으로 sendMessage 호출.');
       sendMessage();
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', height: '400px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'Arial, sans-serif' }}>
-      {/* 메시지 표시 영역 */}
+    <div style={{ display: 'flex', flexDirection: 'column', height: '400px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'Arial, sans-serif', backgroundColor: '#fff' }}>
       <div style={{ flexGrow: 1, overflowY: 'auto', padding: '10px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
         {messages.map((msg, index) => (
           <div
@@ -142,7 +138,7 @@ const ChatbotWidget: React.FC = () => {
             }}
           >
             {msg.role === 'assistant' ? (
-              msg.content === null ? '(AI 기능 호출 중...)' : msg.content.split('\n').map((line, i) => (
+              msg.content === null ? '(AI가 생각 중이거나 기능을 사용 중입니다...)' : msg.content.split('\n').map((line, i) => (
                 <p key={i} style={{ margin: 0 }}>{line}</p>
               ))
             ) : (
@@ -157,7 +153,6 @@ const ChatbotWidget: React.FC = () => {
         )}
         <div ref={messagesEndRef} />
       </div>
-      {/* 메시지 입력 form */}
       <form onSubmit={sendMessage} style={{ display: 'flex', padding: '10px', borderTop: '1px solid #ccc' }}>
         <textarea
           value={inputMessage}
@@ -201,4 +196,5 @@ const ChatbotWidget: React.FC = () => {
   );
 };
 
+// ★★★ 이 export default ChatbotWidget; 줄이 파일의 맨 마지막에 있는지 다시 한번 확인해주세요! ★★★
 export default ChatbotWidget;
