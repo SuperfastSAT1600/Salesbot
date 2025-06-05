@@ -29,7 +29,7 @@ export default function FAQSection() {
           href={`/landing/${faq.slug}`}
           style={{
             display: 'block',
-            padding: '1.5rem',
+            padding: '1rem',
             // ★★★ 테두리 색상 변경 ★★★
             border: '1px solid #071BE9', 
             borderRadius: 12,
@@ -50,10 +50,10 @@ export default function FAQSection() {
           }}>
             {faq.icon}
           </div>
-          <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.25rem', fontWeight: 600, color: '#111827' }}>
+          <h3 style={{ margin: '0 0 0.5rem', fontSize: '1rem', fontWeight: 600, color: '#111827' }}>
             {faq.title}
           </h3>
-          <p style={{ margin: '0 0 0.75rem', color: '#374151', fontSize: '0.95rem', lineHeight: 1.6 }}>{faq.description}</p>
+          <p style={{ margin: '0 0 0.75rem', color: '#374151', fontSize: '0.8rem', lineHeight: 1.6 }}>{faq.description}</p>
           <p style={{ margin: '0', color: '#6B7280', fontSize: '0.875rem' }}>
             {typeof faq.count === 'number' ? `${faq.count} articles` : faq.count}
           </p>
