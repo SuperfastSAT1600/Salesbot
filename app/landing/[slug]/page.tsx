@@ -1,5 +1,5 @@
 // app/landing/[slug]/page.tsx
-import Image, { ImageProps } from 'next/image';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import ReactMarkdown, { Options as ReactMarkdownOptions } from 'react-markdown';
 // 경로 확인: app/landing/[slug]/에서 app/lib/faqs.ts로 가려면 '../../lib/faqs'입니다.
@@ -7,22 +7,17 @@ import ReactMarkdown, { Options as ReactMarkdownOptions } from 'react-markdown';
 import { faqs, FAQItem } from '../../lib/faqs';
 
 interface PageProps {
-  // ★★★ Vercel 빌드 오류에 대응하기 위해 params 타입을 다시 Promise로 감쌉니다. ★★★
+  // ★★★ Vercel 빌드 오류 해결을 위해 params 타입을 Promise로 감쌉니다. ★★★
   params: Promise<{ slug: string }>;
-  // searchParams 타입은 현재 사용하지 않으므로, 오류 발생 시 잠시 제거하거나 Promise<...> 형태로 변경 고려
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // ★★★ searchParams를 현재 사용하지 않으므로, 타입 정의에서 제거합니다. ★★★
+  // searchParams?: { [key: string]: string | string[] | undefined }; 
 }
 
-export default async function FAQDetailPage({ params: paramsPromise, searchParams: searchParamsPromise }: PageProps) {
-  // ★★★ Promise 형태의 params를 await으로 실제 객체로 변환합니다. ★★★
+// ★★★ 함수 시그니처에서 searchParams 관련 부분을 제거합니다. ★★★
+export default async function FAQDetailPage({ params: paramsPromise }: PageProps) { 
   const params = await paramsPromise;
-  // searchParams도 Promise로 받았다면 await으로 실제 객체를 가져와야 합니다.
-  // const searchParams = searchParamsPromise ? await searchParamsPromise : undefined; 
-  // 현재 searchParams를 사용하지 않으므로 위 라인은 주석 처리하거나, PageProps에서 searchParams를 제거합니다.
-  // Vercel 오류가 searchParams에서도 발생한다면, PageProps에서 searchParams?: Promise<...>; 로 수정하거나 제거합니다.
-  // 지금은 params 문제에 집중하기 위해 searchParams 관련 코드는 그대로 둡니다. 만약 searchParams에서도 유사한 오류가 발생하면 알려주세요.
-
   const slug = params.slug;
+
   console.log(`[FAQDetailPage] 상세 페이지 요청 slug: ${slug}`);
 
   const item: FAQItem | undefined = faqs.find(f => f.slug === slug);
