@@ -11,10 +11,10 @@ export interface FAQItem {
 
 export const faqs: FAQItem[] = [
   {
-    title: 'SuperfastSAT',
-    description: '처음 이용하시는 분들을 위한 안내서',
+    title: '시작하기',
+    description: 'SuperfastSAT에 처음 오셨나요? 여기부터 시작하면 됩니다!',
     count: 1, // 숫자 또는 "2 articles"
-    icon: '🚀',
+    icon: '⚡',
     slug: 'getting-started',
     content: `
 ### 회사 소개
@@ -41,7 +41,7 @@ SuperfastSAT와 상의해 주시기 바랍니다.
     title: '맞춤형 수업',
     description: '진정한 맞춤형 교육을 경험해 보세요',
     count: 1,
-    icon: '✨',
+    icon: '🪄',
     slug: 'features',
     content: `
 ### SuperfastSAT의 수업
