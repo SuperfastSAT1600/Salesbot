@@ -17,7 +17,8 @@ export const faqs: FAQItem[] = [
     icon: '🚀',
     slug: 'getting-started',
     content: `
-**회사 소개**
+###회사 소개
+
 SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
 현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
 다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
@@ -71,26 +72,10 @@ SuperfastSAT와 상의해 주시기 바랍니다.
 `
   },
   {
-    title: '빠른 상담 진행',
-    description: 'SAT 전문가와 빠르게 상담하고 싶으신가요?',
-    count: 1,
-    icon: '💳',
-    slug: 'pricing',
-    content: `
-### SAT 전문가와 빠른 상담
-
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
-
-- **Kakao ID**: supaship 
-
-- **안내**: 한국 번호로 전화가 올 경우도 있으니 받아주세요. 만약 전화가 어렵다면 카카오 보이스 톡으로도 진행 가능합니다. 메시지 주시면 빠른 상담 진행됩니다.
-`
-  },
-  {
     title: '수업 후기',
     description: 'SuperfastSAT를 통해 먼저 경험한 성공',
     count: 1, // 실제 후기 이미지 개수에 맞게 조절
-    icon: '💬',
+    icon: '🧑‍🎓',
     slug: 'app-guide', // 이 slug를 'reviews'로 변경하는 것을 추천 (URL 명확성)
     content: `
 ### 실제 수업 후기 모음
@@ -136,7 +121,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
     title: '입시 필독서 "SAT 공부의 판을 바꾸다"',
     description: '해외 입시의 바이블',
     count: 1,
-    icon: '❓',
+    icon: '📖',
     slug: 'faqs', // 이 slug를 'book-introduction' 등으로 변경 고려
     content: `
 ### 책소개
@@ -158,6 +143,22 @@ SuperfastSAT 공동대표
 온라인 교보문고 "SAT 공부의 판을 바꾸다" 검색
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+`
+  },
+    {
+    title: '빠른 상담 진행',
+    description: 'SAT 전문가와 빠르게 상담하고 싶으신가요?',
+    count: 1,
+    icon: '👨‍💻',
+    slug: 'pricing',
+    content: `
+### SAT 전문가와 빠른 상담
+
+- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+
+- **Kakao ID**: supaship 
+
+- **안내**: 한국 번호로 전화가 올 경우도 있으니 받아주세요. 만약 전화가 어렵다면 카카오 보이스 톡으로도 진행 가능합니다. 메시지 주시면 빠른 상담 진행됩니다.
 `
   },
 ];

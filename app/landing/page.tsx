@@ -1,14 +1,12 @@
-// 파일 경로: app/landing/page.tsx
+// app/landing/page.tsx
 'use client';
 
 import ChatbotWidget from '../components/ChatbotWidget';
-// 경로 확인: app/landing/ 에서 app/components/ 로 가려면 '../components/FAQSection' 이 맞습니다.
+// ★★★ 경로 확인: app/landing/ 에서 app/components/ 로 가려면 '../components/FAQSection' 입니다. ★★★
 import FAQSection from '../components/FAQSection'; 
 
 export default function LandingPage() {
-  // Vercel 함수 로그에서 이 메시지가 보이면 LandingPage 컴포넌트 자체는 실행된 것입니다.
-  console.log("[LandingPage Vercel Debug] LandingPage 컴포넌트 렌더링 시작 (디버깅용 FAQSection 호출 중).");
-
+  console.log("[LandingPage] 렌더링 시작 (Vercel에서 이 로그가 보여야 함)");
   return (
     <div
       style={{
@@ -17,17 +15,17 @@ export default function LandingPage() {
         alignItems: 'center',
         justifyContent: 'flex-start',
         minHeight: '100vh',
-        padding: '2rem',
+        padding: '2rem 1rem', // 좌우 패딩 추가
         background: '#f9fafb',
       }}
     >
       {/* 1. 제목 & 부제 */}
-      <div style={{ marginBottom: '3rem', width: '100%', maxWidth: '800px' }}>
-        <h1 style={{ fontSize: '2.75rem', margin: '0 0 0.75rem', textAlign: 'center', color: '#1F2937', fontWeight: 700 }}>
+      <div style={{ marginBottom: '3rem', width: '100%', maxWidth: '800px', padding: '0 1rem' }}>
+        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.75rem)', margin: '0 0 0.75rem', textAlign: 'center', color: '#1F2937', fontWeight: 700 }}>
           SuperfastSAT
         </h1>
-        <p style={{ margin: '0', color: '#4B5563', textAlign: 'center', fontSize: '1.15rem', lineHeight: 1.7 }}>
-          무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.
+        <p style={{ margin: '0', color: '#4B5563', textAlign: 'center', fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', lineHeight: 1.7 }}>
+          SAT 무엇이든 물어보세요!
         </p>
       </div>
 
@@ -42,17 +40,15 @@ export default function LandingPage() {
         <ChatbotWidget />
       </div>
 
-      {/* 3. FAQ 섹션 (디버깅용 FAQSection 호출) */}
+      {/* 3. FAQ 섹션 */}
       <div
         style={{
           width: '100%',
-          maxWidth: 960,
+          maxWidth: 960, // FAQ 카드들이 너무 좁게 나오지 않도록 너비 확보
         }}
       >
-        <h2 style={{ textAlign: 'center', fontSize: '2.25rem', marginBottom: '2rem', color: '#1F2937', fontWeight: 600 }}>
-          자주 묻는 질문 및 안내 (현재 테스트 중)
-        </h2>
-        <FAQSection /> {/* 디버깅용 FAQSection 컴포넌트를 사용합니다. */}
+
+        <FAQSection /> {/* FAQSection 컴포넌트를 사용합니다. */}
       </div>
     </div>
   );
