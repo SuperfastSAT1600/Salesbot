@@ -3,18 +3,19 @@ import Image, { ImageProps } from 'next/image';
 import { notFound } from 'next/navigation';
 import ReactMarkdown, { Options as ReactMarkdownOptions } from 'react-markdown';
 // 경로 확인: app/landing/[slug]/에서 app/lib/faqs.ts로 가려면 '../../lib/faqs'가 맞습니다.
+// (사용자님의 VS Code 탐색기 이미지 기준: app 폴더 내부에 lib 폴더 존재)
 import { faqs, FAQItem } from '../../lib/faqs';
 
 interface PageProps {
-  // ★★★ Vercel 빌드 오류에 대응하기 위해 params 타입을 다시 Promise로 감쌉니다. ★★★
+  // Vercel 빌드 오류에 대응하기 위해 params 타입을 Promise로 감쌉니다.
   params: Promise<{ slug: string }>;
-  // searchParams는 현재 사용하지 않으므로 타입 정의에서 제거하여 오류 가능성을 줄입니다.
+  // searchParams는 현재 사용하지 않으므로, 타입 정의에서 제거하여 오류 가능성을 줄입니다.
   // searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-// ★★★ 함수 시그니처에서 params를 paramsPromise로 받고, searchParams는 제거합니다. ★★★
+// 함수 시그니처에서 params를 paramsPromise로 받고, searchParams는 제거합니다.
 export default async function FAQDetailPage({ params: paramsPromise }: PageProps) {
-  // ★★★ Promise 형태의 params를 await으로 실제 객체로 변환합니다. ★★★
+  // Promise 형태의 params를 await으로 실제 객체로 변환합니다.
   const params = await paramsPromise;
   const slug = params.slug;
 
@@ -24,7 +25,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
   
   if (!item) {
     console.log(`[FAQDetailPage] slug '${slug}'에 해당하는 아이템을 찾을 수 없습니다. notFound() 호출.`);
-    return notFound();
+    return notFound(); // notFound()는 반드시 반환(return)해야 합니다.
   }
 
   console.log(`[FAQDetailPage] '${slug}'에 해당하는 아이템 로드 완료: ${item.title}`);
@@ -34,21 +35,24 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
       const imageSrc = src as string | undefined;
       const imageAlt = alt as string | undefined;
       if (imageSrc) {
+        // Markdown 내 이미지를 Next/Image로 렌더링합니다.
         return (
           <div style={{ margin: '2rem auto', textAlign: 'center', maxWidth: '100%' }}>
             <Image
               src={imageSrc}
               alt={imageAlt || '상세 내용 이미지'}
-              width={700} 
-              height={525} 
+              width={700} // 이미지의 기본 렌더링 너비 (레이아웃 확보용)
+              height={525} // 이미지의 기본 렌더링 높이 (700px 너비에 4:3 비율 가정)
+                           // 실제 표시 크기는 아래 style로 제어됩니다.
               style={{
-                maxWidth: '100%', 
-                height: 'auto',    
+                maxWidth: '100%', // 컨테이너 너비에 맞춤
+                height: 'auto',    // 원본 비율 유지
                 borderRadius: '8px',
                 boxShadow: '0 2px 8px rgba(0,0,0,0.1)'
               }}
               onError={(e) => {
                 console.error(`마크다운 내 이미지 로드 실패: ${imageSrc}`);
+                // (e.target as HTMLImageElement).style.display = 'none'; // 로드 실패 시 이미지 숨기기 (선택)
               }}
             />
           </div>
@@ -63,7 +67,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
     ul: ({node, ...props}) => <ul style={{paddingLeft: '30px', marginBottom: '1.25rem', listStyleType: 'disc'}} {...props} />,
     ol: ({node, ...props}) => <ol style={{paddingLeft: '30px', marginBottom: '1.25rem', listStyleType: 'decimal'}} {...props} />,
     li: ({node, ...props}) => <li style={{marginBottom: '0.65rem'}} {...props} />,
-    code: ({ node, className, children, ...props }) => { 
+    code: ({ node, className, children, ...props }) => { // inline prop을 사용하지 않고 className으로 구분
       const match = /language-(\w+)/.exec(className || '');
       return match ? ( 
         <pre style={{background: '#f8f9fa', border: '1px solid #e9ecef', padding: '1rem', borderRadius: '6px', overflowX: 'auto', fontSize: '0.9rem', lineHeight: 1.6, margin: '1.5rem 0'}}><code className={`language-${match[1]}`} {...props}>{children}</code></pre>
@@ -103,6 +107,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
         </p>
       )}
       
+      {/* 페이지 상단 메인 이미지 */}
       <div style={{
         position: 'relative',
         width: '100%',
@@ -114,7 +119,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
         boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
       }}>
         <Image
-          src={`/images/${item.slug}.png`}
+          src={`/images/${item.slug}.png`} // 이미지는 public/images/ 폴더에 slug 이름으로 있어야 합니다.
           alt={item.title}
           fill
           style={{ objectFit: 'contain' }}
@@ -126,6 +131,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
         />
       </div>
 
+      {/* 마크다운 본문 */}
       <div style={{
         textAlign: 'left',
         lineHeight: 1.75,
