@@ -17,7 +17,7 @@ export const faqs: FAQItem[] = [
     icon: '🚀',
     slug: 'getting-started',
     content: `
-###회사 소개
+### 회사 소개
 
 SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
 현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
