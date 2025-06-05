@@ -10,7 +10,7 @@ interface Message {
 
 const initialGreetingMessage: Message = {
   role: 'assistant',
-  content: 'SuperfastSAT 무엇이든 물어보세요!' // 이 메시지는 프론트엔드에서만 표시
+  content: '무엇이든 물어보세요!' // 이 메시지는 프론트엔드에서만 표시
 };
 
 const ChatbotWidget: React.FC = () => {
