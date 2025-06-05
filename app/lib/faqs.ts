@@ -1,37 +1,37 @@
-// app/lib/faqs.ts
+// 파일 경로: app/lib/faqs.ts
 
 export interface FAQItem {
   title: string;
   description: string;
-  count: number | string; // count 타입을 문자열도 허용
+  count: number | string; // '1 articles' 같은 문자열도 허용
   icon: string;
   slug: string;
-  content: string;
+  content: string; // 마크다운 내용
 }
 
 export const faqs: FAQItem[] = [
   {
     title: 'SuperfastSAT',
     description: '처음 이용하시는 분들을 위한 안내서',
-    count: 2,
-    icon: '�',
+    count: 1, // 숫자 또는 "2 articles"
+    icon: '🚀',
     slug: 'getting-started',
     content: `
-**회사 소개** 
+**회사 소개**
 SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
-   현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
-  다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
+현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
+다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
 
-    저희 교육의 핵심은 '개인 맞춤' 입니다.
-    학생 개개인의 학습 수준과 목표를 먼저 파악하고, 그에 맞춰 가장 효과적인
-    학습 계획을 수립합니다. 콘텐트 개발팀, 운영 지원팀, 전문 SAT 강사진, 그리고 교육 기술을
-    담당하는 개발팀이 협력하여 각 학생에게 필요한 교육을 지원합니다.
+저희 교육의 핵심은 '개인 맞춤' 입니다.
+학생 개개인의 학습 수준과 목표를 먼저 파악하고, 그에 맞춰 가장 효과적인
+학습 계획을 수립합니다. 콘텐트 개발팀, 운영 지원팀, 전문 SAT 강사진, 그리고 교육 기술을
+담당하는 개발팀이 협력하여 각 학생에게 필요한 교육을 지원합니다.
 
-    SuperfastSAT의 교육 프로그램을 통해 많은 학생들이
-    목표하는 SAT 점수를 달성하고 있습니다.
+SuperfastSAT의 교육 프로그램을 통해 많은 학생들이
+목표하는 SAT 점수를 달성하고 있습니다.
 
-    체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
-    SuperfastSAT와 상의해 주시기 바랍니다.
+체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
+SuperfastSAT와 상의해 주시기 바랍니다.
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
@@ -39,7 +39,7 @@ SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
   {
     title: '맞춤형 수업',
     description: '진정한 맞춤형 교육을 경험해 보세요',
-    count: 7,
+    count: 1,
     icon: '✨',
     slug: 'features',
     content: `
@@ -73,7 +73,7 @@ SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
   {
     title: '빠른 상담 진행',
     description: 'SAT 전문가와 빠르게 상담하고 싶으신가요?',
-    count: 2,
+    count: 1,
     icon: '💳',
     slug: 'pricing',
     content: `
@@ -81,7 +81,7 @@ SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 
-- **Kakao ID**: supaship  
+- **Kakao ID**: supaship 
 
 - **안내**: 한국 번호로 전화가 올 경우도 있으니 받아주세요. 만약 전화가 어렵다면 카카오 보이스 톡으로도 진행 가능합니다. 메시지 주시면 빠른 상담 진행됩니다.
 `
@@ -89,9 +89,9 @@ SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
   {
     title: '수업 후기',
     description: 'SuperfastSAT를 통해 먼저 경험한 성공',
-    count: 3,
+    count: 1, // 실제 후기 이미지 개수에 맞게 조절
     icon: '💬',
-    slug: 'app-guide',
+    slug: 'app-guide', // 이 slug를 'reviews'로 변경하는 것을 추천 (URL 명확성)
     content: `
 ### 실제 수업 후기 모음
 
@@ -104,37 +104,40 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 "시험을 한달 남기고 1400후반에서 점수가 오르지 않아 고민이었는데 빠른 상담 및 진단 후 아이에게 필요한 부분만 수업 진행해 주셔서
 좋았습니다."
 
-![학생 A의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image1.png)
-![학생 A의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image2.png)
+![학생 A 후기 이미지 1](/images/reviews/review_image1.png)
+![학생 A 후기 이미지 2](/images/reviews/review_image2.png)
 
 ---
 
-**학부모님 후기:**
+**학부모님 B 후기:**
 
 "저는 한국에서, 아이는 혼자 미국 보딩스쿨을 다니기에 학습 관리가 정말 어려웠습니다. 전담 매니저님께서 저보다 더 밀착관리 해주셔서 1300점대에서 두달만에 목표하는 점수 이루었습니다."
 
-![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image3.png)
-![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image4.png)
-![학생 A의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image7.png)
+![학생 B 후기 이미지 1](/images/reviews/review_image3.png)
+![학생 B 후기 이미지 2](/images/reviews/review_image4.png)
+![학생 B 후기 이미지 3](/images/reviews/review_image7.png) 
+{/* 이미지 파일명이 review_image7인 점 유의 */}
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+
 ---
 
-**학부모님 후기:**
+**학부모님 C 후기:**
 
 "오랫동안 학원, 독학 등 여러 공부방법을 진행했지만 특례 원서 제출을 앞두고 점수가 완성되지 않아 마음이 정말 조급했습니다.두달만에 맞춤수업으로 성공해서 다행이에요."
 
-![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image5.png)
-![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image6.png)
+![학생 C 후기 이미지 1](/images/reviews/review_image5.png)
+![학생 C 후기 이미지 2](/images/reviews/review_image6.png)
+
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
   },
   {
     title: '입시 필독서 "SAT 공부의 판을 바꾸다"',
     description: '해외 입시의 바이블',
-    count: 6,
+    count: 1,
     icon: '❓',
-    slug: 'faqs',
+    slug: 'faqs', // 이 slug를 'book-introduction' 등으로 변경 고려
     content: `
 ### 책소개
 SAT는 단순히 대학 입학을 위한 시험 이상의 의미를 담고 있습니다. 이 시험은 학생들의 학업 역량은 물론, 입학 후의 학업 적응력, 취업, 대학원 진학까지 예측할 수 있는 강력하고 신뢰할 수 있는 지표입니다. 따라서 SAT 시험의 설계 의도와 평가 목표를 먼저 이해하는 것이 효과적인 준비의 첫걸음입니다.
@@ -143,7 +146,7 @@ SAT는 단순히 대학 입학을 위한 시험 이상의 의미를 담고 있�
 
 특히, 학생의 독해력과 문해력 등 기본 학습 역량을 정확하게 평가하여 개별 맞춤 학습법을 제안함으로써, 학년보다는 현재 능력에 기반한 준비 전략을 강조합니다. 더불어 최신 미국 입시 동향, 대학 정보, 컬리지보드(College Board) 발표 자료, 각 대학의 공식 기사 및 Common Data Set (CDS) 등 최신 자료를 바탕으로 실질적이고 구체적인 입학 준비 전략을 전달합니다.
 
-SAT 준비는 단순한 암기가 아닌, 체계적인 학습 습관을 길러가는 과정입니다. 이 책이 학부모님들께 자녀의 SAT 준비에 있어 막연한 불안을 해소하고, 구체적이며 효과적인 전략 수립에 도움이 되기를 바랍니다. 또한 학생들은 제대로 된 공부 방법을 익히고, 꾸준히 도전하여 여러분의 목표를 빠르게 달성하기를 응원합니다.
+SAT 준비는 단순한 암기가 아닌, 체계적인 학습 습관을 길러가는 과정입니다. 이 책이 학부모님들께 자녀의 SAT 준비에 있어 막연한 불안을 해소하고, 구체적이며 효과적인 전략 수립에 도움이 되기를 바랍니다. 또한 학생들은 제대로 된 공부 방법을 익히고, 꾸준히 도전하여 여러분의 목표를 빠르게 달성하기기를 응원합니다.
 
 ### 저자소개
 SuperfastSAT 공동대표
