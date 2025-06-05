@@ -44,7 +44,7 @@ export default function FAQSection() {
         >
           <div style={{
             fontSize: '2.25rem',
-            marginBottom: '1rem',
+            marginBottom: '0.7rem',
             lineHeight: 1,
             color: '#4B5563',
           }}>
