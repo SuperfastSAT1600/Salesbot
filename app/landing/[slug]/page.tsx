@@ -3,22 +3,21 @@ import Image, { ImageProps } from 'next/image';
 import { notFound } from 'next/navigation';
 import ReactMarkdown, { Options as ReactMarkdownOptions } from 'react-markdown';
 // 경로 확인: app/landing/[slug]/에서 app/lib/faqs.ts로 가려면 '../../lib/faqs'가 맞습니다.
-// (사용자님의 VS Code 탐색기 이미지 기준: app 폴더 내부에 lib 폴더 존재)
 import { faqs, FAQItem } from '../../lib/faqs';
 
 interface PageProps {
-  // ★★★ params 타입을 일반 객체로 변경합니다. ★★★
-  params: { slug: string };
-  // ★★★ searchParams를 PageProps에서 완전히 제거합니다. ★★★
+  // ★★★ Vercel 빌드 오류에 대응하기 위해 params 타입을 다시 Promise로 감쌉니다. ★★★
+  params: Promise<{ slug: string }>;
+  // searchParams는 현재 사용하지 않으므로 타입 정의에서 제거하여 오류 가능성을 줄입니다.
+  // searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
 }
 
-// ★★★ 함수 시그니처에서 searchParams를 제거합니다. ★★★
-export default async function FAQDetailPage({ params }: PageProps) {
-  // ★★★ 이 라인은 Vercel의 "params should be awaited" 등의 런타임 오류를
-  // 방지하거나, params 객체가 사용 준비될 때까지의 시간을 벌어주는 역할을 할 수 있습니다. ★★★
-  await Promise.resolve(); 
-
+// ★★★ 함수 시그니처에서 params를 paramsPromise로 받고, searchParams는 제거합니다. ★★★
+export default async function FAQDetailPage({ params: paramsPromise }: PageProps) {
+  // ★★★ Promise 형태의 params를 await으로 실제 객체로 변환합니다. ★★★
+  const params = await paramsPromise;
   const slug = params.slug;
+
   console.log(`[FAQDetailPage] 상세 페이지 요청 slug: ${slug}`);
 
   const item: FAQItem | undefined = faqs.find(f => f.slug === slug);
