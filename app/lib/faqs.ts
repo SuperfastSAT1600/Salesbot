@@ -17,10 +17,10 @@ export const faqs: FAQItem[] = [
     icon: '�',
     slug: 'getting-started',
     content: `
-
-  **회사 소개** SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
-    현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
-    다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
+**회사 소개** 
+SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
+   현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
+  다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
 
     저희 교육의 핵심은 '개인 맞춤' 입니다.
     학생 개개인의 학습 수준과 목표를 먼저 파악하고, 그에 맞춰 가장 효과적인
@@ -33,7 +33,7 @@ export const faqs: FAQItem[] = [
     체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
     SuperfastSAT와 상의해 주시기 바랍니다.
 
-  - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
   },
   {
