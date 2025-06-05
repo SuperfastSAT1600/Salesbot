@@ -1,12 +1,12 @@
 // app/lib/faqs.ts
 
 export interface FAQItem {
-  title: string
-  description: string
-  count: number
-  icon: string
-  slug: string
-  content: string
+  title: string;
+  description: string;
+  count: number | string; // count 타입을 문자열도 허용
+  icon: string;
+  slug: string;
+  content: string;
 }
 
 export const faqs: FAQItem[] = [
@@ -14,27 +14,26 @@ export const faqs: FAQItem[] = [
     title: 'SuperfastSAT',
     description: '처음 이용하시는 분들을 위한 안내서',
     count: 2,
-    icon: '🚀',
+    icon: '�',
     slug: 'getting-started',
     content: `
 
-**회사 소개**  
-   SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
-   현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
-   다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
+  **회사 소개** SuperfastSAT는 맞춤형 온라인 SAT교육을 제공하는 회사입니다.
+    현재 전 세계 13개국 학생들이 저희 수업을 통해 공부하고 있으며,
+    다년간 SAT 교육 분야에서 꾸준히 성과를 내고 있습니다.
 
-   저희 교육의 핵심은 '개인 맞춤' 입니다.
-   학생 개개인의 학습 수준과 목표를 먼저 파악하고, 그에 맞춰 가장 효과적인
-   학습 계획을 수립합니다. 콘텐트 개발팀, 운영 지원팀, 전문 SAT 강사진, 그리고 교육 기술을
-   담당하는 개발팀이 협력하여 각 학생에게 필요한 교육을 지원합니다.
+    저희 교육의 핵심은 '개인 맞춤' 입니다.
+    학생 개개인의 학습 수준과 목표를 먼저 파악하고, 그에 맞춰 가장 효과적인
+    학습 계획을 수립합니다. 콘텐트 개발팀, 운영 지원팀, 전문 SAT 강사진, 그리고 교육 기술을
+    담당하는 개발팀이 협력하여 각 학생에게 필요한 교육을 지원합니다.
 
-   SuperfastSAT의 교육 프로그램을 통해 많은 학생들이
-   목표하는 SAT 점수를 달성하고 있습니다.
+    SuperfastSAT의 교육 프로그램을 통해 많은 학생들이
+    목표하는 SAT 점수를 달성하고 있습니다.
 
-   체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
-   SuperfastSAT와 상의해 주시기 바랍니다.
+    체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
+    SuperfastSAT와 상의해 주시기 바랍니다.
 
-   - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+  - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
   },
   {
@@ -89,7 +88,7 @@ export const faqs: FAQItem[] = [
   },
   {
     title: '수업 후기',
-    description: 'SueprfastSAT를 통해 먼저한 성공',
+    description: 'SuperfastSAT를 통해 먼저 경험한 성공',
     count: 3,
     icon: '💬',
     slug: 'app-guide',
@@ -100,7 +99,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 
 ---
 
-**학부모님 후기:**
+**학부모님 A 후기:**
 
 "시험을 한달 남기고 1400후반에서 점수가 오르지 않아 고민이었는데 빠른 상담 및 진단 후 아이에게 필요한 부분만 수업 진행해 주셔서
 좋았습니다."
@@ -128,7 +127,6 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 ![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image5.png)
 ![학생 B의 점수 향상 그래프 또는 후기 캡처](/images/reviews/review_image6.png)
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
-
 `
   },
   {
@@ -159,4 +157,4 @@ SuperfastSAT 공동대표
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
   },
-]
+];
