@@ -12,7 +12,7 @@ export interface FAQItem {
 export const faqs: FAQItem[] = [
   {
     title: '시작하기',
-    description: 'SuperfastSAT에 처음 오셨나요? 여기부터 시작하면 됩니다!',
+    description: 'SuperfastSAT에 처음 오셨나요? 여기서부터 시작하면 됩니다!',
     count: 1, // 숫자 또는 "2 articles"
     icon: '⚡',
     slug: 'getting-started',
@@ -156,7 +156,9 @@ SuperfastSAT 공동대표
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 
-- **Kakao ID**: supaship 
+- **Kakao ID**: supaship
+
+- **공식 블로그**: [클릭](blog.naver.com/superfastsat)
 
 - **안내**: 한국 번호로 전화가 올 경우도 있으니 받아주세요. 만약 전화가 어렵다면 카카오 보이스 톡으로도 진행 가능합니다. 메시지 주시면 빠른 상담 진행됩니다.
 `
