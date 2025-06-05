@@ -6,13 +6,12 @@ import ReactMarkdown from 'react-markdown';
 import { faqs, FAQItem } from '../../lib/faqs';
 
 interface PageProps {
-  // ★★★ Vercel 빌드 오류에 대응하기 위해 params 타입을 다시 Promise로 감쌉니다. ★★★
   params: Promise<{ slug: string }>;
-  searchParams?: { [key: string]: string | string[] | undefined };
+  // ★★★ searchParams 타입을 잠시 제거하여 Vercel 빌드 오류에 대응합니다. ★★★
+  // searchParams?: { [key: string]: string | string[] | undefined }; 
 }
 
 export default async function FAQDetailPage({ params: paramsPromise }: PageProps) {
-  // ★★★ Promise 형태의 params를 await으로 실제 객체로 변환합니다. ★★★
   const params = await paramsPromise;
   const slug = params.slug;
 
@@ -113,7 +112,7 @@ export default async function FAQDetailPage({ params: paramsPromise }: PageProps
             ul: ({node, ...props}) => <ul style={{paddingLeft: '30px', marginBottom: '1.25rem', listStyleType: 'disc'}} {...props} />,
             ol: ({node, ...props}) => <ol style={{paddingLeft: '30px', marginBottom: '1.25rem', listStyleType: 'decimal'}} {...props} />,
             li: ({node, ...props}) => <li style={{marginBottom: '0.65rem'}} {...props} />,
-            code: ({node, inline, className, children, ...props}: any) => { // VS Code 빨간불 임시 우회 (any 타입 사용)
+            code: ({node, inline, className, children, ...props}: any) => { 
               const match = /language-(\w+)/.exec(className || '');
               return match ? ( 
                 <pre style={{background: '#f8f9fa', border: '1px solid #e9ecef', padding: '1rem', borderRadius: '6px', overflowX: 'auto', fontSize: '0.9rem', lineHeight: 1.6, margin: '1.5rem 0'}}><code className={`language-${match[1]}`} {...props}>{children}</code></pre>
