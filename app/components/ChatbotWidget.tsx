@@ -10,7 +10,7 @@ interface Message {
 
 const initialGreetingMessage: Message = {
   role: 'assistant',
-  content: '무엇이든 물어보세요!' // 이 메시지는 프론트엔드에서만 표시
+  content: '반가워요! 궁금한 게 있다면 물어봐 주세요. 저희에 대해 먼저 알고 싶다면 화면을 조금 내려주세요. 빠르게 확인 가능합니다.' // 이 메시지는 프론트엔드에서만 표시
 };
 
 const ChatbotWidget: React.FC = () => {
