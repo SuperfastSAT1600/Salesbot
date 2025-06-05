@@ -44,7 +44,7 @@ export default function LandingPage() {
       <div
         style={{
           width: '100%',
-          maxWidth: 960, // FAQ 카드들이 너무 좁게 나오지 않도록 너비 확보
+          maxWidth: 900, // FAQ 카드들이 너무 좁게 나오지 않도록 너비 확보
         }}
       >
 
