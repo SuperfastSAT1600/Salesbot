@@ -122,7 +122,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
     description: '해외 입시의 바이블',
     count: 1,
     icon: '📖',
-    slug: 'book-introduction', // 이 slug를 'book-introduction' 등으로 변경 고려
+    slug: 'book-introduction',
     content: `
 ### 책소개
 SAT는 단순히 대학 입학을 위한 시험 이상의 의미를 담고 있습니다. 이 시험은 학생들의 학업 역량은 물론, 입학 후의 학업 적응력, 취업, 대학원 진학까지 예측할 수 있는 강력하고 신뢰할 수 있는 지표입니다. 따라서 SAT 시험의 설계 의도와 평가 목표를 먼저 이해하는 것이 효과적인 준비의 첫걸음입니다.
