@@ -140,7 +140,7 @@ SuperfastSAT 공동대표
 미국계 온라인 튜터링 서비스 업체에 입사하여 CX 총괄을 역임했고, 학부모들이 가장 큰 고민으로 삼고 있던 SAT 학습에 대한 근본적인 해결책을 찾고자 국내외 에듀테크 전문가들과 함께 SuperfastSAT를 런칭했습니다.
 
 ### 구매방법
-온라인 교보문고 "SAT 공부의 판을 바꾸다" 검색
+[온라인 교보문고 "SAT 공부의 판을 바꾸다](https://product.kyobobook.co.kr/detail/S000216110149)
 
 - **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
 `
