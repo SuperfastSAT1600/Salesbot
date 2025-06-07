@@ -148,7 +148,7 @@ const ChatbotWidget: React.FC = () => {
         ))}
         {isLoading && (
           <div style={{ alignSelf: 'flex-start', color: '#666', padding: '8px 12px' }}>
-            AI가 답변을 생성 중입니다...
+           SAT 고민, 곧 해결해 드릴께요! 
           </div>
         )}
         <div ref={messagesEndRef} />
