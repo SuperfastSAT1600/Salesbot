@@ -34,7 +34,7 @@ SuperfastSAT의 교육 프로그램을 통해 많은 학생들이
 체계적이고 신뢰할 수 있는 SAT 준비를 원하신다면
 SuperfastSAT와 상의해 주시기 바랍니다.
 
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 `
   },
   {
@@ -68,7 +68,7 @@ SuperfastSAT와 상의해 주시기 바랍니다.
 진단 결과에 따라 최대 3~5명의 소수정예 수업 진행됩니다. 실시간 라이브 강의와 개인별 맞춤 합습이 결합된 형태로, 기초부터 심화 내용까지
 단기간에 밀도 높게 다루어 점수 향상을 이끌어냅니다. 전담 매니저님이 특강 기간 동안의 학습을 지원합니다.
 
-**빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+**빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 `
   },
   {
@@ -102,7 +102,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 ![학생 B 후기 이미지 2](/images/reviews/review_image4.png)
 ![학생 B 후기 이미지 3](/images/reviews/review_image7.png) 
 
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 
 ---
 
@@ -113,7 +113,7 @@ SuperfastSAT와 함께 목표를 달성한 학생들의 생생한 후기입니�
 ![학생 C 후기 이미지 1](/images/reviews/review_image5.png)
 ![학생 C 후기 이미지 2](/images/reviews/review_image6.png)
 
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 `
   },
   {
@@ -141,7 +141,7 @@ SuperfastSAT 공동대표
 ### 구매방법
 [온라인 교보문고 "SAT 공부의 판을 바꾸다](https://product.kyobobook.co.kr/detail/S000216110149)
 
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 `
   },
     {
@@ -153,7 +153,7 @@ SuperfastSAT 공동대표
     content: `
 ### SAT 전문가와 빠른 상담
 
-- **빠른 카톡 상담**: [클릭](https://open.kakao.com/o/snZ5FDzh)
+- **빠른 카톡 상담**: [클릭](https://kakao-redirect-three.vercel.app/?src=instagram_인스타그램카카오톡)
 
 - **Kakao ID**: supaship
 
