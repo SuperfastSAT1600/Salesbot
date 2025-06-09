@@ -39,7 +39,7 @@ export default function LandingPage() {
 
         <p style={{ margin: '0', color: '#4B5563', fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', lineHeight: 1.7 }}>
           {/* 부제 텍스트가 비어있어서 공백으로 나옵니다. 필요하시면 여기에 내용을 추가하세요. */}
-            {/* 예시 부제 */}
+           목표 점수에 가장 빠르게 {/* 예시 부제 */}
         </p>
       </div>
 
