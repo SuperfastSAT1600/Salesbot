@@ -12,11 +12,11 @@ const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 // ★★★ 디버깅 로그가 추가된 함수 ★★★
 async function logConversationToDB(threadId: string, userInput: string, assistantResponse: string) {
   // --- 데이터베이스에 저장하기 직전, 실제 데이터를 터미널에 출력 ---
-  console.log("--- [DB DEBUG] 저장 시도할 데이터 ---");
-  console.log("[DB DEBUG] Thread ID:", threadId);
-  console.log("[DB DEBUG] User Message:", userInput);
-  console.log("[DB DEBUG] Bot Response:", assistantResponse);
-  console.log("------------------------------------");
+  //console.log("--- [DB DEBUG] 저장 시도할 데이터 ---");
+  //console.log("[DB DEBUG] Thread ID:", threadId);
+  //console.log("[DB DEBUG] User Message:", userInput);
+  //console.log("[DB DEBUG] Bot Response:", assistantResponse);
+  //console.log("------------------------------------");
   // --- 여기까지 데이터 확인용 로그 ---
 
   try {
