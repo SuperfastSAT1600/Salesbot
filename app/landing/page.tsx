@@ -1,9 +1,10 @@
-// app/landing/page.tsx
+// 파일 경로: app/landing/page.tsx (챗봇 위치 변경 후)
+
 'use client';
 
-import Image from 'next/image'; // ★★★ Image 컴포넌트를 import 합니다. ★★★
 import ChatbotWidget from '../components/ChatbotWidget';
-import FAQSection from '../components/FAQSection'; 
+import FAQSection from '../components/FAQSection';
+import Image from 'next/image';
 
 export default function LandingPage() {
   return (
@@ -18,54 +19,55 @@ export default function LandingPage() {
         background: '#f9fafb',
       }}
     >
-      {/* 1. 제목 & 부제 */}
-      <div style={{ marginBottom: '3rem', width: '100%', maxWidth: '800px', padding: '0 1rem', textAlign: 'center' }}>
-        
-        {/* ▼▼▼ 기존 h1 태그를 Image 컴포넌트로 교체합니다. ▼▼▼ */}
-        <div style={{ marginBottom: '0.75rem', display: 'inline-block' }}> {/* 로고를 가운데 정렬하고 하단 여백을 줍니다. */}
+      {/* 1. 페이지 헤더 (로고와 제목) - 순서 변경 없음 */}
+      <header style={{ marginBottom: '0.01rem', width: '100%', maxWidth: '800px', padding: '0 1rem', textAlign: 'center' }}>
+        <div style={{ marginBottom: '0.75rem', display: 'inline-block' }}>
           <Image
-            src="/images/logo.png" // ★★★ public/images/logo.png를 가리킵니다. 파일명이 다르면 이 부분을 수정해주세요. ★★★
+            src="/images/logo.png"
             alt="SuperfastSAT 로고"
-            width={300} // ★ 이미지의 원본 너비에 가까운 값 또는 원하는 기본 너비 (픽셀)
-            height={60}  // ★ 이미지의 원본 높이에 가까운 값 또는 원하는 기본 높이 (픽셀)
+            width={300}
+            height={60}
             style={{
-              maxWidth: '100%', // 화면이 줄어들 때 컨테이너 너비를 넘지 않도록 합니다.
-              height: 'auto',    // 너비에 맞춰 높이가 자동으로 조절되어 원본 비율을 유지합니다.
+              maxWidth: '100%',
+              height: 'auto',
             }}
-            priority // 페이지 상단의 중요한 이미지이므로 priority 속성 추가
+            priority
           />
         </div>
-        {/* ▲▲▲ Image 컴포넌트로 교체 완료 ▲▲▲ */}
-
         <p style={{ margin: '0', color: '#4B5563', fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', lineHeight: 1.7 }}>
-          {/* 부제 텍스트가 비어있어서 공백으로 나옵니다. 필요하시면 여기에 내용을 추가하세요. */}
-           목표 점수에 가장 빠르게 {/* 예시 부제 */}
+          목표 점수에 가장 빠르게
         </p>
-      </div>
-
-      {/* 2. 챗봇 박스 */}
-      <div
+      </header>
+      
+      {/* ★★★ 2. FAQ 아코디언 섹션 (위치가 위로 변경됨) ★★★ */}
+      <section
         style={{
           width: '100%',
-          maxWidth: 480,
-          marginBottom: '3.5rem',
-        }}
-      >
-        <ChatbotWidget />
-      </div>
-
-      {/* 3. FAQ 섹션 */}
-      <div
-        style={{
-          width: '100%',
-          maxWidth: 960,
+          maxWidth: '800px',
+          marginBottom: '1.5rem', // 챗봇과의 간격을 위해 여백 추가
         }}
       >
         <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.8rem, 4vw, 2.25rem)', marginBottom: '2rem', color: '#1F2937', fontWeight: 600 }}>
           자주 묻는 질문 및 안내
         </h2>
         <FAQSection />
-      </div>
+      </section>
+
+      {/* ★★★ 3. 챗봇 위젯 섹션 (위치가 아래로 변경됨) ★★★ */}
+      <section
+        style={{
+          width: '100%',
+          maxWidth: 480,
+        }}
+      >
+        <ChatbotWidget />
+      </section>
+
+
+      {/* 4. 페이지 푸터 (선택 사항) - 순서 변경 없음 */}
+      <footer style={{ marginTop: '4rem', color: '#9CA3AF', fontSize: '0.875rem' }}>
+        © {new Date().getFullYear()} SuperfastSAT. All rights reserved.
+      </footer>
     </div>
   );
 }
