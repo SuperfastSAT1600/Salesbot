@@ -120,7 +120,7 @@ const ChatbotWidget: React.FC = () => {
         ))}
         {isLoading && (
           <div style={{ alignSelf: 'flex-start', color: '#666', padding: '8px 12px' }}>
-            답변을 생각하고 있어요...
+            잠시만 기다려 주세요!
           </div>
         )}
         <div ref={messagesEndRef} />
