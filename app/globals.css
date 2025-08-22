@@ -70,6 +70,12 @@
 /* 슬라이더 호버 효과 개선 */
 .review-slider {
   transition: all 0.3s ease;
+  /* 하드웨어 가속 활성화 */
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  -webkit-perspective: 1000;
 }
 
 .review-slider:hover {
@@ -78,9 +84,11 @@
 
 /* 모바일 최적화 */
 @media (max-width: 768px) {
-  /* 모바일에서 애니메이션 속도 조정 */
+  /* 모바일에서 애니메이션 속도 대폭 개선 */
   .review-slider {
-    animation-duration: 20s !important;
+    animation-duration: 12s !important;
+    /* 모바일에서 더 부드러운 애니메이션 */
+    animation-timing-function: linear !important;
   }
   
   /* 터치 디바이스에서 부드러운 스크롤 */
@@ -93,10 +101,23 @@
     max-width: 100%;
     height: auto;
   }
+  
+  /* 모바일에서 하드웨어 가속 강화 */
+  .review-slider {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 /* 태블릿 최적화 */
 @media (min-width: 769px) and (max-width: 1024px) {
+  .review-slider {
+    animation-duration: 18s !important;
+  }
+}
+
+/* 데스크톱 최적화 */
+@media (min-width: 1025px) {
   .review-slider {
     animation-duration: 25s !important;
   }
