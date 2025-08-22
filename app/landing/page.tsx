@@ -42,7 +42,7 @@ export default function LandingPage() {
             flexWrap: 'wrap'
           }}>
           <Image
-            src="/images/logo.png"
+            src="/images/color-logo.png"
             alt="SuperfastSAT 로고"
               width={140}
               height={45}
