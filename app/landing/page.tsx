@@ -1420,7 +1420,7 @@ export default function LandingPage() {
               style={{
                 display: 'flex',
                 gap: 'clamp(1rem, 3vw, 2rem)',
-                animation: 'slideLeft 25s linear infinite',
+                animation: 'slideLeft 20s linear infinite',
                 width: 'fit-content'
               }}
               onMouseEnter={(e) => {

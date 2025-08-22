@@ -86,7 +86,7 @@
 @media (max-width: 768px) {
   /* 모바일에서 애니메이션 속도 대폭 개선 */
   .review-slider {
-    animation-duration: 12s !important;
+    animation-duration: 8s !important;
     /* 모바일에서 더 부드러운 애니메이션 */
     animation-timing-function: linear !important;
   }
