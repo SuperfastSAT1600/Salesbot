@@ -1,26 +1,44 @@
 // AI-AGENT-DEMO/app/page.tsx
 
-// ChatbotWidget 컴포넌트를 임포트합니다.
-// 현재 파일(page.tsx)이 'app' 폴더에 있고, ChatbotWidget은 'app/components' 폴더에 있으므로 경로는 './components/ChatbotWidget'입니다.
-import ChatbotWidget from './components/ChatbotWidget';
-
-// Next.js의 메인 페이지 컴포넌트입니다.
 export default function Home() {
   return (
-    // <main> 태그는 페이지의 주요 콘텐츠를 담습니다.
-    // 여기서는 챗봇 위젯을 중앙에 배치하기 위한 간단한 스타일을 추가했습니다.
-    <main style={{ padding: '20px', minHeight: '100vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
-      <h1>우리 회사 AI 챗봇 데모</h1>
-      <p>궁금한 점이 있으면 챗봇에게 물어보세요!</p>
-      <br/>
-
-      {/* ----- 여기에 챗봇 위젯이 표시됩니다. ----- */}
-      {/* 이 태그 하나로 ChatbotWidget 컴포넌트의 모든 UI와 로직이 페이지에 포함됩니다. */}
-      <ChatbotWidget />
-      {/* ------------------------------------------- */}
-
-      <br/>
-      <p>Powered by OpenAI</p>
+    <main style={{ 
+      padding: 'clamp(1rem, 4vw, 20px)', 
+      minHeight: '100vh', 
+      display: 'flex', 
+      flexDirection: 'column', 
+      alignItems: 'center', 
+      justifyContent: 'center',
+      textAlign: 'center'
+    }}>
+      <h1 style={{
+        fontSize: 'clamp(1.5rem, 6vw, 2.5rem)',
+        marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
+        color: '#1F2937',
+        fontWeight: 700,
+        lineHeight: 1.2
+      }}>
+        우리 회사 AI 챗봇 데모
+      </h1>
+      <p style={{
+        fontSize: 'clamp(1rem, 3vw, 1.25rem)',
+        marginBottom: 'clamp(1.5rem, 4vw, 2rem)',
+        color: '#4B5563',
+        lineHeight: 1.6,
+        maxWidth: 'clamp(280px, 90vw, 600px)'
+      }}>
+        궁금한 점이 있으면 챗봇에게 물어보세요!
+      </p>
+      
+      {/* 챗봇 위젯 제거됨 */}
+      
+      <p style={{
+        fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
+        color: '#6B7280',
+        marginTop: 'clamp(2rem, 6vw, 3rem)'
+      }}>
+        Powered by OpenAI
+      </p>
     </main>
   );
 }

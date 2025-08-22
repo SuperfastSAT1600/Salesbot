@@ -51,3 +51,53 @@
   border-radius: 8px;
   cursor: pointer;
 }
+
+/* 후기 이미지 슬라이더 애니메이션 */
+@keyframes slideLeft {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* 슬라이더 호버 시 일시정지 */
+.review-slider:hover {
+  animation-play-state: paused;
+}
+
+/* 슬라이더 호버 효과 개선 */
+.review-slider {
+  transition: all 0.3s ease;
+}
+
+.review-slider:hover {
+  cursor: pointer;
+}
+
+/* 모바일 최적화 */
+@media (max-width: 768px) {
+  /* 모바일에서 애니메이션 속도 조정 */
+  .review-slider {
+    animation-duration: 20s !important;
+  }
+  
+  /* 터치 디바이스에서 부드러운 스크롤 */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* 모바일에서 이미지 최적화 */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* 태블릿 최적화 */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .review-slider {
+    animation-duration: 25s !important;
+  }
+}
