@@ -16,11 +16,20 @@ export const metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "SuperfastSAT",
+    images: [
+      {
+        url: "/images/color-logo.png",
+        width: 1200,
+        height: 630,
+        alt: "SAT 국가대표 SuperfastSAT",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "SAT 국가대표 SuperfastSAT",
     description: "무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.",
+    images: ["/images/color-logo.png"],
   },
 };
 
