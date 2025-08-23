@@ -1,4 +1,4 @@
-// 파일 경로: app/layout.tsx
+// 파일 경로: app/layout.tsx (Open Graph 메타데이터 포함)
 import "./globals.css"; // Tailwind CSS 포함한 전역 스타일
 import { Inter } from 'next/font/google'; // Next.js에서 Google Font 사용 예시 (선택 사항)
 import Script from 'next/script';
