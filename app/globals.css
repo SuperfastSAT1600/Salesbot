@@ -107,6 +107,28 @@
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
   }
+  
+  /* 모바일에서 히어로 섹션 영상 최적화 */
+  .mobile-video {
+    /* 텍스트 영역에만 맞춰서 표시 */
+    width: 100% !important;
+    height: auto !important;
+    minWidth: auto !important;
+    minHeight: auto !important;
+    /* 텍스트 영역 높이에 맞춤 - "SAT 고득점자들이 '진짜로' 선택한 수업" 문구까지만 */
+    maxHeight: 40vh !important;
+    /* 텍스트 영역 중앙에 위치 */
+    top: 30% !important;
+    objectFit: cover !important;
+    /* 모바일에서 영상 크기 조정 - 확대하지 않고 비율 유지 */
+    transform: translate(-50%, -50%) !important;
+    /* 텍스트 영역 너비에 맞춤 */
+    maxWidth: 85vw !important;
+    /* 16:9 비율 유지 */
+    aspectRatio: 16/9 !important;
+    /* 영상이 텍스트 영역에만 정확히 맞춰지도록 */
+    overflow: hidden !important;
+  }
 }
 
 /* 태블릿 최적화 */

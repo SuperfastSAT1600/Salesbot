@@ -701,6 +701,7 @@ export default function LandingPage() {
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'center',
+              alignItems: 'center',
               minHeight: 'clamp(280px, 50vw, 320px)'
             }}
             onMouseOver={(e) => {
@@ -752,9 +753,11 @@ export default function LandingPage() {
                 fontFamily: '"Inter", sans-serif',
                 letterSpacing: '-0.03em',
                 textShadow: '0 4px 20px rgba(252, 211, 77, 0.3)',
-                lineHeight: 1
+                lineHeight: 1,
+                whiteSpace: 'nowrap',
+                textAlign: 'center'
               }}>
-                +307,200분
+                +12,562,560분
               </div>
               {/* 간단한 성장 아이콘 */}
               <div style={{
