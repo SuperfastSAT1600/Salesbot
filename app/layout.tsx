@@ -18,10 +18,10 @@ export const metadata = {
     siteName: "SuperfastSAT",
     images: [
       {
-        url: "/images/color-logo.png",
+        url: "/images/reviews/SSS.png",
         width: 1200,
         height: 630,
-        alt: "SAT 국가대표 SuperfastSAT",
+        alt: "SAT 국가대표 SuperfastSAT - 수업 방식 소개",
       },
     ],
   },
@@ -29,7 +29,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "SAT 국가대표 SuperfastSAT",
     description: "무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.",
-    images: ["/images/color-logo.png"],
+    images: ["/images/reviews/SSS.png"],
   },
 };
 
