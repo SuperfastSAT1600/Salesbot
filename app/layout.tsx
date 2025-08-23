@@ -8,8 +8,20 @@ import Script from 'next/script';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-  title: "SuperfastSAT 고객센터",
+  title: "SAT 국가대표 SuperfastSAT",
   description: "무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.",
+  openGraph: {
+    title: "SAT 국가대표 SuperfastSAT",
+    description: "무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.",
+    type: "website",
+    locale: "ko_KR",
+    siteName: "SuperfastSAT",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SAT 국가대표 SuperfastSAT",
+    description: "무엇이든 물어보세요! SAT 고민을 단숨에 해결해 드립니다.",
+  },
 };
 
 export default function RootLayout({
