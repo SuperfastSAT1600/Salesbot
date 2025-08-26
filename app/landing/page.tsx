@@ -1158,7 +1158,7 @@ export default function LandingPage() {
             position: 'relative',
             zIndex: 3
           }}>
-            학습 DNA 진단 테스트
+            학습 진단 테스트
           </h2>
           <p style={{
             fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
@@ -1220,7 +1220,7 @@ export default function LandingPage() {
               e.currentTarget.style.transform = 'translateY(0)';
               e.currentTarget.style.boxShadow = '0 8px 32px rgba(252, 211, 77, 0.4)';
             }}>
-              학습 DNA 테스트 시작하기
+              학습 진단 테스트 시작하기
             </button>
           </a>
         </div>
@@ -1748,106 +1748,16 @@ export default function LandingPage() {
       <footer style={{
         background: 'linear-gradient(135deg, #0F172A 0%, #1E293B 100%)',
         color: '#9CA3AF',
-        padding: '4rem 0 2rem 0',
-        position: 'relative'
+        padding: '2rem 0',
+        textAlign: 'center'
       }}>
-        {/* 상단 장식선 */}
         <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '3px',
-          background: 'linear-gradient(90deg, #071BE9 0%, #3B82F6 100%)'
-        }} />
-        
-        <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          padding: '0 2rem'
+          fontSize: '0.85rem',
+          fontFamily: '"Inter", sans-serif',
+          fontWeight: '400',
+          letterSpacing: '0.01em'
         }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '2rem',
-            marginBottom: '2rem'
-          }}>
-            <div>
-              <h4 style={{ 
-                color: 'white', 
-                marginBottom: '1rem', 
-                fontSize: '1.1rem',
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '600',
-                letterSpacing: '0.01em'
-              }}>고객센터</h4>
-              <div style={{ 
-                fontSize: '0.9rem', 
-                lineHeight: 1.6,
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '400',
-                letterSpacing: '0.01em'
-              }}>
-                <div>채팅문의</div>
-                <div>평일 : 오전 10시 ~ 오후 10시</div>
-                <div>주말/공휴일 : 오전 10시 ~ 오후 6시</div>
-              </div>
-            </div>
-            <div>
-              <h4 style={{ 
-                color: 'white', 
-                marginBottom: '1rem', 
-                fontSize: '1.1rem',
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '600',
-                letterSpacing: '0.01em'
-              }}>서비스</h4>
-              <div style={{ 
-                fontSize: '0.9rem', 
-                lineHeight: '1.6',
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '400',
-                letterSpacing: '0.01em'
-              }}>
-                <div>회사소개</div>
-                <div>공지사항</div>
-                <div>자주 묻는 질문</div>
-              </div>
-            </div>
-            <div>
-              <h4 style={{ 
-                color: 'white', 
-                marginBottom: '1rem', 
-                fontSize: '1.1rem',
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '600',
-                letterSpacing: '0.01em'
-              }}>SNS</h4>
-              <div style={{ 
-                fontSize: '0.9rem', 
-                lineHeight: '1.6',
-                fontFamily: '"Inter", sans-serif',
-                fontWeight: '400',
-                letterSpacing: '0.01em'
-              }}>
-                <div>유튜브</div>
-                <div>인스타그램</div>
-                <div>네이버</div>
-              </div>
-            </div>
-          </div>
-          
-          <div style={{
-            borderTop: '1px solid #374151',
-            paddingTop: '2rem',
-            textAlign: 'center',
-            fontSize: '0.85rem',
-            fontFamily: '"Inter", sans-serif',
-            fontWeight: '400',
-            letterSpacing: '0.01em'
-          }}>
-            © {new Date().getFullYear()} SuperfastSAT. All rights reserved.
-          </div>
+          © {new Date().getFullYear()} SuperfastSAT. All rights reserved.
         </div>
       </footer>
 
