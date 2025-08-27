@@ -1491,9 +1491,9 @@ export default function LandingPage() {
             {/* 이미지 전환 컨테이너 */}
             <div style={{
               position: 'relative',
-              width: 'clamp(320px, 90vw, 800px)',
-              height: 'clamp(240px, 65vw, 500px)',
-              borderRadius: 'clamp(18px, 3vw, 24px)',
+              width: 'clamp(300px, 85vw, 800px)',
+              height: 'clamp(200px, 60vw, 500px)',
+              borderRadius: 'clamp(16px, 3vw, 20px)',
               overflow: 'hidden',
               boxShadow: '0 20px 60px rgba(7, 27, 233, 0.15)',
               border: '3px solid rgba(7, 27, 233, 0.1)',
@@ -1507,7 +1507,8 @@ export default function LandingPage() {
                 height: '100%',
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'center'
+                justifyContent: 'center',
+                overflow: 'hidden'
               }}>
                 <Image
                   src="/images/Confidence 1.png"
@@ -1515,15 +1516,17 @@ export default function LandingPage() {
                   width={800}
                   height={500}
                   style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
+                    maxWidth: 'calc(100% - clamp(1rem, 4vw, 2rem))',
+                    maxHeight: 'calc(100% - clamp(1rem, 4vw, 2rem))',
                     width: 'auto',
                     height: 'auto',
-                    objectFit: 'none',
+                    objectFit: 'scale-down',
                     objectPosition: 'center',
-                    padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    padding: 'clamp(1rem, 4vw, 2rem)',
                     opacity: 1,
-                    transition: 'all 0.6s ease-in-out'
+                    transition: 'all 0.6s ease-in-out',
+                    display: 'block',
+                    margin: 'auto'
                   }}
                   className="confidence-image active"
                 />
@@ -1533,19 +1536,20 @@ export default function LandingPage() {
                   width={800}
                   height={500}
                   style={{
-                    maxWidth: '100%',
-                    maxHeight: '100%',
+                    maxWidth: 'calc(100% - clamp(1rem, 4vw, 2rem))',
+                    maxHeight: 'calc(100% - clamp(1rem, 4vw, 2rem))',
                     width: 'auto',
                     height: 'auto',
-                    objectFit: 'none',
+                    objectFit: 'scale-down',
                     objectPosition: 'center',
-                    padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    padding: 'clamp(1rem, 4vw, 2rem)',
                     opacity: 0,
                     transition: 'all 0.6s ease-in-out',
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
-                    transform: 'translate(-50%, -50%)'
+                    transform: 'translate(-50%, -50%)',
+                    display: 'block'
                   }}
                   className="confidence-image"
                 />
