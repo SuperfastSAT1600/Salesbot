@@ -3,9 +3,73 @@
 'use client';
 
 import Image from 'next/image';
+import { useEffect } from 'react';
 import KakaoTalkButton from '../components/KakaoTalkButton';
 
 export default function LandingPage() {
+  // 자동 이미지 전환을 위한 useEffect
+  useEffect(() => {
+    let currentImageIndex = 0;
+    const totalImages = 2;
+    let isPaused = false;
+    
+    // 전역 변수 초기화
+    (window as any).pauseConfidenceAutoChange = false;
+    
+    const autoChangeImage = () => {
+      if (isPaused || (window as any).pauseConfidenceAutoChange) return;
+      
+      const images = document.querySelectorAll('.confidence-image') as NodeListOf<HTMLElement>;
+      const buttons = document.querySelectorAll('.confidence-button') as NodeListOf<HTMLElement>;
+      
+      // 현재 이미지 숨기기
+      if (images[currentImageIndex]) {
+        images[currentImageIndex].style.opacity = '0';
+      }
+      if (buttons[currentImageIndex]) {
+        buttons[currentImageIndex].style.backgroundColor = '#E5E7EB';
+        buttons[currentImageIndex].style.transform = 'scale(1)';
+      }
+      
+      // 다음 이미지로 이동
+      currentImageIndex = (currentImageIndex + 1) % totalImages;
+      
+      // 새 이미지 보이기
+      if (images[currentImageIndex]) {
+        images[currentImageIndex].style.opacity = '1';
+      }
+      if (buttons[currentImageIndex]) {
+        buttons[currentImageIndex].style.backgroundColor = '#071BE9';
+        buttons[currentImageIndex].style.transform = 'scale(1.2)';
+      }
+    };
+    
+    // 3초마다 이미지 자동 전환
+    const interval = setInterval(autoChangeImage, 3000);
+    
+    // 이미지 전환 버튼 클릭 시 자동 전환 일시 중지
+    const pauseAutoChange = () => {
+      isPaused = true;
+      // 5초 후 자동 전환 재개
+      setTimeout(() => {
+        isPaused = false;
+      }, 5000);
+    };
+    
+    // 버튼에 이벤트 리스너 추가
+    const buttons = document.querySelectorAll('.confidence-button');
+    buttons.forEach(button => {
+      button.addEventListener('click', pauseAutoChange);
+    });
+    
+    return () => {
+      clearInterval(interval);
+      buttons.forEach(button => {
+        button.removeEventListener('click', pauseAutoChange);
+      });
+    };
+  }, []);
+
   return (
     <div style={{
       minHeight: '100vh',
@@ -1343,6 +1407,409 @@ export default function LandingPage() {
                 <span style={{ color: '#071BE9', fontWeight: '700' }}>1:1 맞춤형 수업</span>부터 
                 <span style={{ color: '#071BE9', fontWeight: '700' }}>문제 풀이 중심</span>까지, 
                 학생 개개인의 수준과 목표에 맞춘 체계적인 학습 시스템을 제공합니다.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Confidence Rating 기반 세일즈 섹션 */}
+      <section style={{
+        padding: 'clamp(4rem, 10vw, 6rem) 0',
+        backgroundColor: '#ffffff',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        {/* 배경 장식 요소 */}
+        <div style={{
+          position: 'absolute',
+          top: '10%',
+          left: '-100px',
+          width: 'clamp(150px, 30vw, 300px)',
+          height: 'clamp(150px, 30vw, 300px)',
+          background: 'radial-gradient(circle, rgba(7, 27, 233, 0.08) 0%, transparent 70%)',
+          borderRadius: '50%',
+          zIndex: 0
+        }} />
+        <div style={{
+          position: 'absolute',
+          bottom: '20%',
+          right: '-80px',
+          width: 'clamp(120px, 25vw, 250px)',
+          height: 'clamp(120px, 25vw, 250px)',
+          background: 'radial-gradient(circle, rgba(7, 27, 233, 0.06) 0%, transparent 70%)',
+          borderRadius: '50%',
+          zIndex: 0
+        }} />
+        
+        <div style={{
+          maxWidth: '1200px',
+          margin: '0 auto',
+          padding: '0 clamp(1rem, 4vw, 2rem)',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          {/* 섹션 제목 */}
+          <div style={{
+            textAlign: 'center',
+            marginBottom: 'clamp(3rem, 6vw, 4rem)'
+          }}>
+            <h2 style={{
+              fontSize: 'clamp(2.5rem, 6vw, 3.5rem)',
+              fontWeight: '800',
+              color: '#071BE9',
+              marginBottom: 'clamp(1rem, 3vw, 1.5rem)',
+              fontFamily: '"Inter", sans-serif',
+              letterSpacing: '-0.02em',
+              lineHeight: 1.2
+            }}>
+              왜 우리는<br />
+              <span style={{ color: '#FCD34D' }}>고득점을 만들어 낼 수 있을까요?</span>
+            </h2>
+            <p style={{
+              fontSize: 'clamp(1.2rem, 3vw, 1.5rem)',
+              color: '#64748B',
+              fontFamily: '"Inter", sans-serif',
+              fontWeight: '500',
+              letterSpacing: '0.02em',
+              lineHeight: 1.6,
+              maxWidth: '700px',
+              margin: '0 auto'
+            }}>
+              문제를 풀 때 느낀 <span style={{ color: '#071BE9', fontWeight: '600' }}>확신</span>까지 데이터화합니다.<br />
+              <span style={{ color: '#071BE9', fontWeight: '600' }}>데이터</span>를 바탕으로 <span style={{ color: '#071BE9', fontWeight: '600' }}>목표</span>까지 <span style={{ color: '#071BE9', fontWeight: '600' }}>오차없이</span> 나아갑니다.
+            </p>
+          </div>
+
+          {/* Confidence Rating 이미지 전환 섹션 */}
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            gap: 'clamp(2rem, 4vw, 3rem)'
+          }}>
+            {/* 이미지 전환 컨테이너 */}
+            <div style={{
+              position: 'relative',
+              width: 'clamp(320px, 90vw, 800px)',
+              height: 'clamp(240px, 65vw, 500px)',
+              borderRadius: 'clamp(18px, 3vw, 24px)',
+              overflow: 'hidden',
+              boxShadow: '0 20px 60px rgba(7, 27, 233, 0.15)',
+              border: '3px solid rgba(7, 27, 233, 0.1)',
+              backgroundColor: '#ffffff',
+              margin: '0 auto'
+            }}>
+              {/* 이미지들 */}
+              <div style={{
+                position: 'relative',
+                width: '100%',
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
+                <Image
+                  src="/images/Confidence 1.png"
+                  alt="Confidence Rating 시스템 1"
+                  width={800}
+                  height={500}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'none',
+                    objectPosition: 'center',
+                    padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    opacity: 1,
+                    transition: 'all 0.6s ease-in-out'
+                  }}
+                  className="confidence-image active"
+                />
+                <Image
+                  src="/images/Confidence 2.png"
+                  alt="Confidence Rating 시스템 2"
+                  width={800}
+                  height={500}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '100%',
+                    width: 'auto',
+                    height: 'auto',
+                    objectFit: 'none',
+                    objectPosition: 'center',
+                    padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+                    opacity: 0,
+                    transition: 'all 0.6s ease-in-out',
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)'
+                  }}
+                  className="confidence-image"
+                />
+
+
+              </div>
+            </div>
+
+            {/* 이미지 전환 버튼들 */}
+            <div style={{
+              display: 'flex',
+              gap: 'clamp(0.75rem, 2.5vw, 1.25rem)',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              marginTop: 'clamp(1rem, 3vw, 1.5rem)'
+            }}>
+              {[1, 2].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => {
+                    const images = document.querySelectorAll('.confidence-image') as NodeListOf<HTMLElement>;
+                    const buttons = document.querySelectorAll('.confidence-button') as NodeListOf<HTMLElement>;
+                    
+                    // 이미지 전환
+                    images.forEach((img, i) => {
+                      if (i === index - 1) {
+                        img.style.opacity = '1';
+                      } else {
+                        img.style.opacity = '0';
+                      }
+                    });
+                    
+                    // 버튼 상태 업데이트
+                    buttons.forEach((btn, i) => {
+                      if (i === index - 1) {
+                        btn.style.backgroundColor = '#071BE9';
+                        btn.style.transform = 'scale(1.3)';
+                      } else {
+                        btn.style.backgroundColor = '#E5E7EB';
+                        btn.style.transform = 'scale(1)';
+                      }
+                    });
+                    
+                    // 자동 전환 일시 중지 (전역 변수로 제어)
+                    (window as any).pauseConfidenceAutoChange = true;
+                    setTimeout(() => {
+                      (window as any).pauseConfidenceAutoChange = false;
+                    }, 5000);
+                  }}
+                  className="confidence-button"
+                  style={{
+                    width: 'clamp(14px, 3.5vw, 18px)',
+                    height: 'clamp(14px, 3.5vw, 18px)',
+                    borderRadius: '50%',
+                    border: '2px solid rgba(7, 27, 233, 0.2)',
+                    backgroundColor: index === 1 ? '#071BE9' : '#F8FAFF',
+                    cursor: 'pointer',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    transform: index === 1 ? 'scale(1.3)' : 'scale(1)',
+                    boxShadow: index === 1 ? '0 4px 12px rgba(7, 27, 233, 0.3)' : '0 2px 8px rgba(0, 0, 0, 0.1)'
+                  }}
+                  onMouseOver={(e) => {
+                    if (index !== 1) {
+                      e.currentTarget.style.backgroundColor = '#E0E7FF';
+                      e.currentTarget.style.borderColor = 'rgba(7, 27, 233, 0.4)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }
+                  }}
+                  onMouseOut={(e) => {
+                    if (index !== 1) {
+                      e.currentTarget.style.backgroundColor = '#F8FAFF';
+                      e.currentTarget.style.borderColor = 'rgba(7, 27, 233, 0.2)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }
+                  }}
+                />
+              ))}
+            </div>
+
+            {/* 설명 텍스트 */}
+            <div style={{
+              textAlign: 'center',
+              maxWidth: '800px',
+              margin: '0 auto'
+            }}>
+              <p style={{
+                fontSize: 'clamp(1.1rem, 2.5vw, 1.3rem)',
+                color: '#374151',
+                fontFamily: '"Inter", sans-serif',
+                fontWeight: '500',
+                letterSpacing: '0.02em',
+                lineHeight: 1.7,
+                margin: 0
+              }}>
+                <span style={{ color: '#071BE9', fontWeight: '700' }}>Confidence Rating 데이터</span>를 기반으로 
+                학생의 <span style={{ color: '#071BE9', fontWeight: '700' }}>취약점을 정확히 파악</span>하고, 
+                <br />개인별 맞춤 학습 계획을 수립하여 <span style={{ color: '#FCD34D', fontWeight: '700' }}>효율적으로 SAT 점수를 향상</span>시킵니다.
+              </p>
+            </div>
+          </div>
+
+          {/* 핵심 장점 3가지 */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'clamp(2rem, 4vw, 3rem)',
+            marginTop: 'clamp(3rem, 6vw, 4rem)'
+          }}>
+            {/* 장점 1 */}
+            <div style={{
+              padding: 'clamp(2rem, 4vw, 2.5rem)',
+              backgroundColor: '#F8FAFF',
+              borderRadius: 'clamp(16px, 3vw, 20px)',
+              border: '2px solid rgba(7, 27, 233, 0.1)',
+              textAlign: 'center',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(7, 27, 233, 0.15)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}>
+              <div style={{
+                width: 'clamp(60px, 8vw, 80px)',
+                height: 'clamp(60px, 8vw, 80px)',
+                backgroundColor: '#071BE9',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto clamp(1.5rem, 3vw, 2rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                color: 'white',
+                fontWeight: '700'
+              }}>
+                1
+              </div>
+              <h3 style={{
+                fontSize: 'clamp(1.3rem, 3vw, 1.5rem)',
+                fontWeight: '700',
+                color: '#071BE9',
+                marginBottom: 'clamp(1rem, 2vw, 1.25rem)',
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                정확한 진단
+              </h3>
+              <p style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
+                color: '#64748B',
+                lineHeight: 1.6,
+                margin: 0,
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                Confidence Rating을 통해 학생의 실제 이해도를 정확히 파악하여 맞춤형 학습 방향을 제시합니다
+              </p>
+            </div>
+
+            {/* 장점 2 */}
+            <div style={{
+              padding: 'clamp(2rem, 4vw, 2.5rem)',
+              backgroundColor: '#F8FAFF',
+              borderRadius: 'clamp(16px, 3vw, 20px)',
+              border: '2px solid rgba(7, 27, 233, 0.1)',
+              textAlign: 'center',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(7, 27, 233, 0.15)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}>
+              <div style={{
+                width: 'clamp(60px, 8vw, 80px)',
+                height: 'clamp(60px, 8vw, 80px)',
+                backgroundColor: '#071BE9',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto clamp(1.5rem, 3vw, 2rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                color: 'white',
+                fontWeight: '700'
+              }}>
+                2
+              </div>
+              <h3 style={{
+                fontSize: 'clamp(1.3rem, 3vw, 1.5rem)',
+                fontWeight: '700',
+                color: '#071BE9',
+                marginBottom: 'clamp(1rem, 2vw, 1.25rem)',
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                체계적 학습
+              </h3>
+              <p style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
+                color: '#64748B',
+                lineHeight: 1.6,
+                margin: 0,
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                데이터 기반으로 취약점을 체계적으로 보완하여 놓치는 부분 없이 완벽한 SAT 준비를 할 수 있습니다
+              </p>
+            </div>
+
+            {/* 장점 3 */}
+            <div style={{
+              padding: 'clamp(2rem, 4vw, 2.5rem)',
+              backgroundColor: '#F8FAFF',
+              borderRadius: 'clamp(16px, 3vw, 20px)',
+              border: '2px solid rgba(7, 27, 233, 0.1)',
+              textAlign: 'center',
+              transition: 'all 0.3s ease',
+              cursor: 'pointer'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.transform = 'translateY(-8px)';
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(7, 27, 233, 0.15)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}>
+              <div style={{
+                width: 'clamp(60px, 8vw, 80px)',
+                height: 'clamp(60px, 8vw, 80px)',
+                backgroundColor: '#071BE9',
+                borderRadius: '50%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '0 auto clamp(1.5rem, 3vw, 2rem)',
+                fontSize: 'clamp(1.5rem, 3vw, 2rem)',
+                color: 'white',
+                fontWeight: '700'
+              }}>
+                3
+              </div>
+              <h3 style={{
+                fontSize: 'clamp(1.3rem, 3vw, 1.5rem)',
+                fontWeight: '700',
+                color: '#071BE9',
+                marginBottom: 'clamp(1rem, 2vw, 1.25rem)',
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                빠른 점수 향상
+              </h3>
+              <p style={{
+                fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
+                color: '#64748B',
+                lineHeight: 1.6,
+                margin: 0,
+                fontFamily: '"Inter", sans-serif'
+              }}>
+                개인 맞춤형 학습으로 불필요한 반복을 줄이고 핵심에 집중하여 빠르게 목표 점수를 달성합니다
               </p>
             </div>
           </div>
