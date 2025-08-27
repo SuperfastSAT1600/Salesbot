@@ -1751,7 +1751,7 @@ export default function LandingPage() {
                 marginBottom: 'clamp(1rem, 2vw, 1.25rem)',
                 fontFamily: '"Inter", sans-serif'
               }}>
-                체계적 학습
+                반응형 맞춤 학습
               </h3>
               <p style={{
                 fontSize: 'clamp(1rem, 2.5vw, 1.1rem)',
