@@ -1,4 +1,4 @@
-// AI-AGENT-DEMO/app/page.tsx
+// AI-AGENT-DEMO/app/en/page.tsx
 
 'use client';
 
@@ -20,7 +20,7 @@ export default function Home() {
         fontWeight: 700,
         lineHeight: 1.2
       }}>
-        우리 회사 AI 챗봇 데모
+        Our Company AI Chatbot Demo
       </h1>
       <p style={{
         fontSize: 'clamp(1rem, 3vw, 1.25rem)',
@@ -29,10 +29,8 @@ export default function Home() {
         lineHeight: 1.6,
         maxWidth: 'clamp(280px, 90vw, 600px)'
       }}>
-        궁금한 점이 있으면 챗봇에게 물어보세요!
+        Ask our chatbot anything you're curious about!
       </p>
-      
-      {/* 챗봇 위젯 제거됨 */}
       
       {/* Language Switcher */}
       <div style={{
@@ -41,19 +39,8 @@ export default function Home() {
         gap: '1rem',
         alignItems: 'center'
       }}>
-        <span style={{
-          color: '#071BE9',
-          fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
-          fontWeight: '600',
-          padding: '0.5rem 1rem',
-          border: '1px solid #071BE9',
-          borderRadius: '8px',
-          backgroundColor: '#EBF4FF'
-        }}>
-          한국어
-        </span>
         <a 
-          href="/en"
+          href="/"
           style={{
             color: '#6B7280',
             textDecoration: 'none',
@@ -72,8 +59,19 @@ export default function Home() {
             e.currentTarget.style.color = '#6B7280';
           }}
         >
-          English
+          한국어
         </a>
+        <span style={{
+          color: '#071BE9',
+          fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
+          fontWeight: '600',
+          padding: '0.5rem 1rem',
+          border: '1px solid #071BE9',
+          borderRadius: '8px',
+          backgroundColor: '#EBF4FF'
+        }}>
+          English
+        </span>
       </div>
       
       <p style={{
